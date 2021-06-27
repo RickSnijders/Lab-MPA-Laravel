@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', 'App\Http\Controllers\HomeController@index');
+
+Route::get('/queue', 'App\Http\Controllers\HomeController@queue');
+
+Route::get('/song/{id}', 'App\Http\Controllers\SongController@view');
+
+Route::get('/queue/add/{id}', 'App\Http\Controllers\QueueController@addSongToQueue');
+
