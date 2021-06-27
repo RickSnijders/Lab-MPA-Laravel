@@ -22,6 +22,8 @@ class HomeController extends Controller
     }
 
     public function queue(){
-        return view('queue');
+        return view('queue', [
+            'queue' => session('songqueue')
+        ]);
     }
 }

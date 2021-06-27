@@ -23,6 +23,11 @@ class SongSeeder extends Seeder
         Song::create([
             'song_name' => Str::random(10),
         ]);
-
+        Song::create([
+            'song_name' => Str::random(10),
+        ]);
+        Song::create([
+            'song_name' => Str::random(10),
+        ]);
     }
 }

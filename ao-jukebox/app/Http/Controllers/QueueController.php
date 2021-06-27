@@ -13,6 +13,13 @@ class QueueController extends Controller
         $song = Song::findOrFail($id);
         echo $song->song_name;
         $playlist = new Playlist();
-        $playlist->addtoqueue();
+        $playlist->addtoqueue($song);
+        return redirect('/queue');
+    
+    }
+
+    public function clearQueue(){
+        session()->forget('songqueue');
+        return redirect('/'); 
     }
 }

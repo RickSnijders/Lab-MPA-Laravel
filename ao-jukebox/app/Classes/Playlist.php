@@ -7,7 +7,13 @@
         	return "construct function was initialized.";
     	}
 
-    	public function addtoqueue(){
+    	public function addtoqueue($song){
 			echo "dit is een test";
+			if (session('songqueue') == null){
+				session()->put('songqueue', []);
+				session()->push('songqueue', $song->song_name);
+			} else {
+				session()->push('songqueue', $song->song_name);
+			}
     	}
 	}

@@ -4,6 +4,8 @@
     
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<title>@yield('title')</title>
 </head>
@@ -24,11 +26,20 @@
       			<li class="nav-item">
         			<a class="nav-link" href="#">Playlists</a>
       			</li>
+				@if(!isset(Auth::user()->email))
       			<li class="nav-item">
-        			<a class="nav-link" href="#">Login</a>
+        			<a class="nav-link" href="/login">Login</a>
+      			</li>
+				@endif
+				  <li class="nav-item">
+        			<a class="nav-link" href="/logout">Logout</a>
       			</li>
     		</ul>
+			
   		</div>
+		@if(isset(Auth::user()->email))
+		<p class="nav-item m-2">{{Auth::user()->email}} </p>
+		@endif
 	</nav>
 	@yield('content')
 

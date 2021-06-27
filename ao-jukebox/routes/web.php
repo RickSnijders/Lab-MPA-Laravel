@@ -23,5 +23,13 @@ Route::get('/queue', 'App\Http\Controllers\HomeController@queue');
 
 Route::get('/song/{id}', 'App\Http\Controllers\SongController@view');
 
+
 Route::get('/queue/add/{id}', 'App\Http\Controllers\QueueController@addSongToQueue');
 
+Route::get('/queue/clear', 'App\Http\Controllers\QueueController@clearQueue');
+
+Route::get('/login', 'App\Http\Controllers\LoginController@index');
+
+Route::post('/login/checklogin', 'App\Http\Controllers\LoginController@checklogin');
+
+Route::get('/logout', 'App\Http\Controllers\LoginController@logout');
