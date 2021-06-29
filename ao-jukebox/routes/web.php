@@ -21,6 +21,9 @@ Route::get('/', 'App\Http\Controllers\HomeController@index');
 
 Route::get('/queue', 'App\Http\Controllers\HomeController@queue');
 
+Route::post('/genre', 'App\Http\Controllers\HomeController@selectGenre');
+
+
 Route::get('/song/{id}', 'App\Http\Controllers\SongController@view');
 
 

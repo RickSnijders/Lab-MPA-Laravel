@@ -13,7 +13,14 @@
         @if($queue != null)
         @foreach($queue as $song)
 			<?php $number++ ?>
-			<li> {{$number}}. <span>{{ $song }}</span></li>
+			<div class="row border m-2 bg-light">
+				<img src="{{$song->img}}" class=" col-1 w-10 p-0">
+				<div class="col-11">
+					<p> {{$number}}. <span>{{ $song->song_name }}</span></p>
+					<p> {{$song->artist}}</p>
+					<a href="/song/{{$song->id}}">Link</a>
+				</div>
+			</div>
 		@endforeach	
         <a href="/queue/clear">Clear queue</a>
         @endif 

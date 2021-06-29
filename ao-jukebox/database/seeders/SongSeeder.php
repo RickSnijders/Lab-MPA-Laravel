@@ -21,13 +21,79 @@ class SongSeeder extends Seeder
 
         // ]);
         Song::create([
-            'song_name' => Str::random(10),
+            'song_name' => 'RAPSTAR',
+            'artist' => 'Polo G',
+            'genre' => 'Hip-Hop',
+            'img' => 'https://t2.genius.com/unsafe/220x0/https%3A%2F%2Fimages.genius.com%2Fbdb6bca42da6066ccd249cf19c003522.1000x1000x1.png',
         ]);
         Song::create([
-            'song_name' => Str::random(10),
+            'song_name' => 'Astronaut In The Ocean',
+            'artist' => 'Masked Wolf',
+            'genre' => 'Hip-Hop',
+            'img' => 'https://t2.genius.com/unsafe/220x220/https%3A%2F%2Fimages.genius.com%2Fb9349537b1b2771ddbf0630751fa61e3.1000x1000x1.jpg',
         ]);
         Song::create([
-            'song_name' => Str::random(10),
+            'song_name' => 'Up',
+            'artist' => 'Cardi B',
+            'genre' => 'Hip-Hop',
+            'img' => 'https://t2.genius.com/unsafe/220x220/https%3A%2F%2Fimages.genius.com%2F3698043a4ad2bb2bd13ae0b7e3552c66.1000x1000x1.png',
+        ]);
+
+        Song::create([
+            'song_name' => 'good 4 u',
+            'artist' => 'Olivia Rodrigo',
+            'genre' => 'Pop',
+            'img' => 'https://t2.genius.com/unsafe/220x220/https%3A%2F%2Fimages.genius.com%2Fd82b5cd3ea274ca4461f2c67c706b3b8.1000x1000x1.jpg',
+        ]);
+        Song::create([
+            'song_name' => 'Lost Cause',
+            'artist' => 'Billie Eilish',
+            'genre' => 'Pop',
+            'img' => 'https://t2.genius.com/unsafe/220x220/https%3A%2F%2Fimages.genius.com%2Fb826bffa6a542a466c2143f4702b9f25.1000x1000x1.png',
+        ]);
+        Song::create([
+            'song_name' => '34+35',
+            'artist' => 'Ariana Grande',
+            'genre' => 'Pop',
+            'img' => 'https://t2.genius.com/unsafe/220x220/https%3A%2F%2Fimages.genius.com%2F5fcd6a3fa11375296cb3ed04f44c109c.1000x1000x1.jpg',
+        ]);
+
+        Song::create([
+            'song_name' => 'Shy Away',
+            'artist' => 'Twenty One Pilots',
+            'genre' => 'Rock',
+            'img' => 'https://t2.genius.com/unsafe/220x220/https%3A%2F%2Fimages.genius.com%2F41e0d1bbc838b0ea401a6e8dc81e1a11.1000x1000x1.jpg',
+        ]);
+        Song::create([
+            'song_name' => 'Follow You',
+            'artist' => 'Imagine Dragons',
+            'genre' => 'Rock',
+            'img' => 'https://t2.genius.com/unsafe/220x0/https%3A%2F%2Fimages.genius.com%2Fdd36c31557f307171b276c4542256519.1000x1000x1.jpg',
+        ]);
+        Song::create([
+            'song_name' => 'Amazonia',
+            'artist' => 'Gojira',
+            'genre' => 'Rock',
+            'img' => 'https://t2.genius.com/unsafe/220x0/https%3A%2F%2Fimages.genius.com%2Fe448aac9f258af92338b0d75d4e14cbe.1000x1000x1.jpg',
+        ]);
+
+        Song::create([
+            'song_name' => 'Rise',
+            'artist' => 'Lost Frequencies',
+            'genre' => 'Dance',
+            'img' => 'https://t2.genius.com/unsafe/220x0/https%3A%2F%2Fimages.genius.com%2Fc8717bc589b24efddccf2699f8eb56ce.960x960x1.jpg',
+        ]);
+        Song::create([
+            'song_name' => 'Ride it',
+            'artist' => 'Regard',
+            'genre' => 'Dance',
+            'img' => 'https://t2.genius.com/unsafe/220x0/https%3A%2F%2Fimages.genius.com%2Fe6cb3bb727d22bb516ccae82044e5df5.1000x1000x1.jpg',
+        ]);
+        Song::create([
+            'song_name' => 'The Business',
+            'artist' => 'Tiësto',
+            'genre' => 'Dance',
+            'img' => 'https://t2.genius.com/unsafe/220x0/https%3A%2F%2Fimages.genius.com%2F0d989b9727223b8b8a10b1a83b229dc7.1000x1000x1.jpg',
         ]);
     }
 }

@@ -11,9 +11,9 @@
 			echo "dit is een test";
 			if (session('songqueue') == null){
 				session()->put('songqueue', []);
-				session()->push('songqueue', $song->song_name);
+				session()->push('songqueue', $song);
 			} else {
-				session()->push('songqueue', $song->song_name);
+				session()->push('songqueue', $song);
 			}
     	}
 	}
