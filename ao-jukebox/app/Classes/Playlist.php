@@ -8,7 +8,6 @@
     	}
 
     	public function addtoqueue($song){
-			echo "dit is een test";
 			if (session('songqueue') == null){
 				session()->put('songqueue', []);
 				session()->push('songqueue', $song);
@@ -16,4 +15,12 @@
 				session()->push('songqueue', $song);
 			}
     	}
+
+		public function removefromqueue($index){
+			if (session('songqueue') == null){
+				return "queue empty";
+			} else {
+				session()->forget('songqueue.'.$index);
+			}
+		}
 	}

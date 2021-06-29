@@ -8,6 +8,8 @@ use App\Classes\Playlist;
 
 class QueueController extends Controller
 {
+    private $playlist;
+
     //
     public function addSongToQueue($id){
         $song = Song::findOrFail($id);
@@ -21,5 +23,12 @@ class QueueController extends Controller
     public function clearQueue(){
         session()->forget('songqueue');
         return redirect('/'); 
+    }
+
+    public function removeSongFromQueue($id){
+        $playlist = new Playlist();
+        $playlist->removefromqueue($id);
+        return redirect('/queue');
+    
     }
 }

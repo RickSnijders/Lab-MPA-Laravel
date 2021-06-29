@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 use Validator;
 use Auth;
 
@@ -34,6 +35,24 @@ class LoginController extends Controller
 
     function logout(){
         Auth::logout();
+        return redirect('/');
+    }
+
+    function register(){
+        return view('register');
+    }
+
+    function registercheck(Request $request){
+        $this->validate(request(), [
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|alphaNum|min:3'
+        ]);
+
+        $user = User::create(request(['name', 'email', 'password']));
+
+        Auth::login($user);
+
         return redirect('/');
     }
 }

@@ -12,8 +12,14 @@
 			<div class="row  m-2">
 				<img src="{{$song->img}}" class=" col-1 w-10 p-0">
 				<div class="col-11">
-					<p><span>{{ $song->song_name }}</span></p>
-					<p><span>{{ $song->artist }}</span></p>
+					<div class="row m-0 p-0">
+						<p class="m-0 p-0 col-6">{{ $song->song_name }}</p>
+						<p class="m-0 p-0 col-6 text-end">{{ $song->genre }}</p>
+					</div>
+					<div class="row m-0 p-0">
+						<p class="m-0 p-0 col-6"> By {{ $song->artist }} </p>
+						<p class="m-0 p-0 col-6 text-end"><?php $minutes = intdiv($song->duration, 60).':'. ($song->duration % 60); echo $minutes; if (($song->duration % 60) == 0){ echo 0;}?> </p>
+					</div>
 					<a href="/queue/add/{{$song->id}}">Add to queue</a>
 				</div>
 			</div>

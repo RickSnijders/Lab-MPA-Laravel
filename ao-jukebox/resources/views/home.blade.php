@@ -32,10 +32,13 @@
 					<img src="{{$song->img}}" class=" col-1 p-0">
 					<div class="col-11">
 						<div class="row m-0 p-0">
-						<p class="m-0 p-0 col-6"> {{$number}}. <span>{{ $song->song_name }}</span></p>
-						<p class="m-0 p-0 col-6 text-right">{{ $song->genre }}</p>
+							<p class="m-0 p-0 col-6"> {{$number}}. <span>{{ $song->song_name }}</span></p>
+							<p class="m-0 p-0 col-6 text-end">{{ $song->genre }}</p>
 						</div>
-						<p class="m-0 p-0"> By {{ $song->artist }} </p>
+						<div class="row m-0 p-0">
+							<p class="m-0 p-0 col-6"> By {{ $song->artist }} </p>
+							<p class="m-0 p-0 col-6 text-end"><?php $minutes = intdiv($song->duration, 60).':'. ($song->duration % 60 ); echo $minutes; if (($song->duration % 60) == 0){ echo 0;}?> </p>
+						</div>
 						<a href="/song/{{$song->id}}">Link</a>
 						<a href="/queue/add/{{$song->id}}">Add to queue</a>
 					</div>
@@ -46,10 +49,13 @@
 					<img src="{{$song->img}}" class=" col-1 p-0">
 					<div class="col-11">
 						<div class="row m-0 p-0">
-						<p class="m-0 p-0 col-6"> {{$number}}. <span>{{ $song->song_name }}</span></p>
-						<p class="m-0 p-0 col-6 text-right">{{ $song->genre }}</p>
+							<p class="m-0 p-0 col-6"> {{$number}}. <span>{{ $song->song_name }}</span></p>
+							<p class="m-0 p-0 col-6 text-end">{{ $song->genre }}</p>
 						</div>
-						<p class="m-0 p-0"> By {{ $song->artist }} </p>
+						<div class="row m-0 p-0">
+							<p class="m-0 p-0 col-6"> By {{ $song->artist }} </p>
+							<p class="m-0 p-0 col-6 text-end"><?php $minutes = intdiv($song->duration, 60).':'. ($song->duration % 60); echo $minutes; if (($song->duration % 60) == 0){ echo 0;}?> </p>
+						</div>
 						<a href="/song/{{$song->id}}">Link</a>
 						<a href="/queue/add/{{$song->id}}">Add to queue</a>
 					</div>
