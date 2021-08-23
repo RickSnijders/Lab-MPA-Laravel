@@ -33,10 +33,22 @@ class HomeController extends Controller
         $songs = Song::all();
         $genres = Genre::all();
 
-        return view('home', [ 
-            'songs' => $songs,
-            'genres' => $genres,
-            'genreSelected' => $request->input('genrelist')
-        ]);
+        // var_dump($request->input());
+
+        if( isset($request->genrelist)){
+            return view('home', [ 
+                'songs' => $songs,
+                'genres' => $genres,
+                'genreSelected' => $request->input('genrelist')
+            ]);
+        } elseif( isset($request->genrelistPlaylist)){
+            return view('playlist', [ 
+                'songs' => $songs,
+                'genres' => $genres,
+                'genreSelected' => $request->input('genrelistPlaylist')
+            ]);
+        }
+
+        
     }
 }

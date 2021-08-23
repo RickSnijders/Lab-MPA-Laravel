@@ -23,7 +23,7 @@
 						<p class="m-0 p-0 col-6 text-end">{{ $song->genre }}</p>
 					</div>
 					<div class="row m-0 p-0">
-						<p class="m-0 p-0 col-6"> By {{ $song->artist }} </p>
+						<p class="m-0 p-0 col-6 fst-italic"> By {{ $song->artist }} </p>
 						<p class="m-0 p-0 col-6 text-end"><?php $minutes = intdiv($song->duration, 60).':'. ($song->duration % 60); echo $minutes; if (($song->duration % 60) == 0){ echo 0;}?> </p>
 					</div>
 					<a href="/song/{{$song->id}}">Link</a>
@@ -32,7 +32,8 @@
 			</div>
 		@endforeach	
 			<div class="row m-0 p-0">
-				<a class="col-6" href="/queue/clear">Clear queue</a>
+				<a class="col-3" href="/queue/clear">Clear queue</a>
+				<a class="col-3" href="/playlist/save">Save as playlist</a>
 				<p class=" col-6 text-end">Queue duration: <?php $minutes = intdiv($queueDuration, 60).':'. ($queueDuration % 60); echo $minutes; if (($queueDuration % 60) == 0){ echo 0;} ?></p>
 			</div>
 		@endif 

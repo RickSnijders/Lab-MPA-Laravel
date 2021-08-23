@@ -24,7 +24,7 @@
         			<a class="nav-link" href="/queue">Queue</a>
       			</li>
       			<li class="nav-item">
-        			<a class="nav-link" href="#">Playlists</a>
+        			<a class="nav-link" href="/playlist">Playlists</a>
       			</li>
 				@if(!isset(Auth::user()->email))
       			<li class="nav-item">

@@ -29,5 +29,8 @@ class GenreSeeder extends Seeder
         Genre::create([
             'genre' => 'Dance',
         ]);
+        Genre::create([
+            'genre' => 'Indie',
+        ]);
     }
 }

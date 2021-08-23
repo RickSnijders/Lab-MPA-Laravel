@@ -107,5 +107,30 @@ class SongSeeder extends Seeder
             'img' => 'https://t2.genius.com/unsafe/220x0/https%3A%2F%2Fimages.genius.com%2F0d989b9727223b8b8a10b1a83b229dc7.1000x1000x1.jpg',
             'duration' => '164',
         ]);
+
+
+        Song::create([
+            'song_name' => 'Shots',
+            'artist' => 'Imagine Dragons',
+            'genre' => 'Indie',
+            'img' => 'https://t2.genius.com/unsafe/221x221/https%3A%2F%2Fimages.genius.com%2F3fd16bc747e8a3708b689c93eae42972.800x800x1.jpg',
+            'duration' => '232',
+        ]);
+
+        Song::create([
+            'song_name' => 'Greek Tragedy',
+            'artist' => 'The Wombats',
+            'genre' => 'Indie',
+            'img' => 'https://t2.genius.com/unsafe/220x0/https%3A%2F%2Fimages.genius.com%2Fdf8c96df80c5f5a276d1f0a149db5741.1000x1000x1.jpg',
+            'duration' => '209',
+        ]);
+
+        Song::create([
+            'song_name' => 'Black Sun',
+            'artist' => 'Death Cab for Cutie',
+            'genre' => 'Indie',
+            'img' => 'https://t2.genius.com/unsafe/220x0/https%3A%2F%2Fimages.genius.com%2Ffb08776286907258a0967c99e280f1cb.608x604x1.jpg',
+            'duration' => '289',
+        ]);
     }
 }

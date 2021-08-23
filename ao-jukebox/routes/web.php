@@ -33,6 +33,7 @@ Route::get('/queue/delete/{id}', 'App\Http\Controllers\QueueController@removeSon
 
 Route::get('/queue/clear', 'App\Http\Controllers\QueueController@clearQueue');
 
+
 Route::get('/login', 'App\Http\Controllers\LoginController@index');
 
 Route::post('/login/checklogin', 'App\Http\Controllers\LoginController@checklogin');
@@ -42,3 +43,14 @@ Route::get('/logout', 'App\Http\Controllers\LoginController@logout');
 Route::get('/register', 'App\Http\Controllers\LoginController@register');
 
 Route::post('/register/check', 'App\Http\Controllers\LoginController@registercheck');
+
+
+Route::get('/playlist', 'App\Http\Controllers\PlaylistController@index');
+
+Route::post('/playlist/create', 'App\Http\Controllers\PlaylistController@create');
+
+Route::post('/playlist/save', 'App\Http\Controllers\PlaylistController@save');
+
+
+
+

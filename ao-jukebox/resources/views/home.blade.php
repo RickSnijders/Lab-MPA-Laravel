@@ -22,7 +22,6 @@
 		</form>
 	</div>
 
-
 	<ul class="col-6 mx-auto p-0">
 		<?php $number = 0 ?>
 		@foreach($songs as $song)
@@ -36,7 +35,7 @@
 							<p class="m-0 p-0 col-6 text-end">{{ $song->genre }}</p>
 						</div>
 						<div class="row m-0 p-0">
-							<p class="m-0 p-0 col-6"> By {{ $song->artist }} </p>
+							<p class="m-0 p-0 col-6 fst-italic"> By {{ $song->artist }} </p>
 							<p class="m-0 p-0 col-6 text-end"><?php $minutes = intdiv($song->duration, 60).':'. ($song->duration % 60 ); echo $minutes; if (($song->duration % 60) == 0){ echo 0;}?> </p>
 						</div>
 						<a href="/song/{{$song->id}}">Link</a>
@@ -53,7 +52,7 @@
 							<p class="m-0 p-0 col-6 text-end">{{ $song->genre }}</p>
 						</div>
 						<div class="row m-0 p-0">
-							<p class="m-0 p-0 col-6"> By {{ $song->artist }} </p>
+							<p class="m-0 p-0 col-6 fst-italic"> By {{ $song->artist }} </p>
 							<p class="m-0 p-0 col-6 text-end"><?php $minutes = intdiv($song->duration, 60).':'. ($song->duration % 60); echo $minutes; if (($song->duration % 60) == 0){ echo 0;}?> </p>
 						</div>
 						<a href="/song/{{$song->id}}">Link</a>
