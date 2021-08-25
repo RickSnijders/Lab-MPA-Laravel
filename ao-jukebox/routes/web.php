@@ -51,13 +51,17 @@ Route::post('/playlist/create', 'App\Http\Controllers\PlaylistController@create'
 
 Route::get('/playlist/save', 'App\Http\Controllers\PlaylistController@save')->middleware('auth');
 
-Route::get('/playlist/add/{id}', 'App\Http\Controllers\PlaylistController@add')->middleware('auth');
-
 Route::get('/playlist/playlistname/{id}', 'App\Http\Controllers\PlaylistController@playlistname')->middleware('auth');
 
 Route::post('/playlist/newname', 'App\Http\Controllers\PlaylistController@newname')->middleware('auth');
 
 Route::get('/playlist/delete/{id}', 'App\Http\Controllers\PlaylistController@delete')->middleware('auth');
+
+Route::get('/playlist/deletesong/{id}', 'App\Http\Controllers\PlaylistController@deletesong')->middleware('auth');
+
+Route::get('/playlist/addsong/{id}', 'App\Http\Controllers\PlaylistController@addsong')->middleware('auth');
+
+Route::post('/playlist/addsongtopl', 'App\Http\Controllers\PlaylistController@addsongtopl')->middleware('auth');
 
 
 

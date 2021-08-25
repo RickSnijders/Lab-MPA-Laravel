@@ -85,10 +85,6 @@ class PlaylistController extends Controller
 
     }
 
-    public function add($id){
-
-    }
-
     public function playlistname($id){
         $name = DB::table('playlists')->where('id', $id)->get();
         return view('playlistname', [
@@ -116,6 +112,42 @@ class PlaylistController extends Controller
     public function delete($id){
         DB::table('playlists')->where('id', '=', $id)->delete();
         DB::table('playlistitem')->where('playlistid', '=', $id)->delete();
+        return redirect('/playlist');
+    }
+
+    public function deletesong($id){
+        DB::table('playlistitem')->where('id', '=', $id)->delete();
+        return redirect('/playlist');
+    }
+
+    public function addsong($id){
+        $pickedsongs = DB::table('playlistitem')->where('playlistid', $id)->pluck('songid');
+        $songs = Song::all();
+        return view('playlistsongadd', [
+            'songs' => $songs,
+            'playlistid' => $id,
+            'pickedsongs' => $pickedsongs,
+        ]);
+    }
+
+    public function addsongtopl(Request $request){
+        $songlist = array();
+   
+        foreach ($request->input() as $song){
+            if( $song==(int)$song){
+                if( $song>0){
+                    array_push($songlist, $song);
+                }   
+            }
+        }
+
+        if($songlist == NULL){
+            return redirect('/');
+        }
+
+        foreach ($songlist as $item){
+            DB::insert('insert into playlistitem (playlistid, songid) values (?, ?)', [$request->input('playlistid'), $item]);
+        }
         return redirect('/playlist');
     }
 }

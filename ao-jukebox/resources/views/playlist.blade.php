@@ -20,11 +20,13 @@
                     <div class="row">
                         <h5 class="col-4">{{ $playlist->name }}</h5>
                         <a class="col-2 p-1 btn btn-secondary" href="/playlist/playlistname/{{ $playlist->id }}">Change Name</a>
-                        <a class="col-2 p-1 btn btn-danger" href="/playlist/delete/{{ $playlist->id }}">Delete Playlist</a>
+                        <a style="background-color: #f35d6b;" class="col-2 p-1 btn btn-danger" href="/playlist/delete/{{ $playlist->id }}">Delete Playlist</a>
+                        <a class="col-2 p-1 btn btn-success" href="/playlist/addsong/{{ $playlist->id }}">Add Song</a>
                     </div>
                     <ul>
                         <?php 
                             $totalduration = 0;
+                            $totalsongs = 0;
                         ?>
                         
                         @foreach($playlistitems as $item)
@@ -32,14 +34,18 @@
                         @if($item->playlistid == $playlist->id)
                             @foreach($songs as $song)
                             @if($item->songid == $song->id)
-                            <li class="col-12">
-                                <div class="row m-0 p-0">
-                                    <p class="m-0 p-0 col-6">{{ $song->song_name }}</p>
-                                    <p class="m-0 p-0 col-6 text-end">{{ $song->genre }}</p>
+                            <?php $totalsongs++; ?>
+                            <li class="col-12 row border m-1 bg-light">
+                                <img src="{{$song->img}}" class=" col-1 p-0">
+                                <div class="row m-0 p-0 col-11 border-bottom ">
+                                    <p class="m-0 p-1 col-6">{{ $song->song_name }}</p>
+                                    <p class="m-0 p-1 col-6 text-end">{{ $song->genre }}</p>
+                                    <p class="m-0 p-1 col-6 fst-italic"> By {{ $song->artist }} </p>
+                                    <p class="m-0 p-1 col-6 text-end"><?php $minutes = intdiv($song->duration, 60).':'. ($song->duration % 60); echo $minutes; if (($song->duration % 60) == 0){ echo 0;}?> </p>
                                 </div>
-                                <div class="row m-0 p-0">
-                                    <p class="m-0 p-0 col-6 fst-italic"> By {{ $song->artist }} </p>
-                                    <p class="m-0 p-0 col-6 text-end"><?php $minutes = intdiv($song->duration, 60).':'. ($song->duration % 60); echo $minutes; if (($song->duration % 60) == 0){ echo 0;}?> </p>
+                                <div class="row p-0 m-0">
+                                    <h6 class="col-6 p-1">{{ $totalsongs }}.</h6>
+                                    <a style="background-color: #f35d6b;" class="col-6 p-1 btn btn-danger" href="/playlist/deletesong/{{ $item->id }}">Delete Song</a>
                                 </div>
                             </li>
                             <?php 
