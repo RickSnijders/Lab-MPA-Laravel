@@ -34,7 +34,7 @@ Route::get('/queue/delete/{id}', 'App\Http\Controllers\QueueController@removeSon
 Route::get('/queue/clear', 'App\Http\Controllers\QueueController@clearQueue');
 
 
-Route::get('/login', 'App\Http\Controllers\LoginController@index');
+Route::get('/login', 'App\Http\Controllers\LoginController@index')->name('login');
 
 Route::post('/login/checklogin', 'App\Http\Controllers\LoginController@checklogin');
 
@@ -47,10 +47,17 @@ Route::post('/register/check', 'App\Http\Controllers\LoginController@registerche
 
 Route::get('/playlist', 'App\Http\Controllers\PlaylistController@index');
 
-Route::post('/playlist/create', 'App\Http\Controllers\PlaylistController@create');
+Route::post('/playlist/create', 'App\Http\Controllers\PlaylistController@create')->middleware('auth');
 
-Route::post('/playlist/save', 'App\Http\Controllers\PlaylistController@save');
+Route::get('/playlist/save', 'App\Http\Controllers\PlaylistController@save')->middleware('auth');
 
+Route::get('/playlist/add/{id}', 'App\Http\Controllers\PlaylistController@add')->middleware('auth');
+
+Route::get('/playlist/playlistname/{id}', 'App\Http\Controllers\PlaylistController@playlistname')->middleware('auth');
+
+Route::post('/playlist/newname', 'App\Http\Controllers\PlaylistController@newname')->middleware('auth');
+
+Route::get('/playlist/delete/{id}', 'App\Http\Controllers\PlaylistController@delete')->middleware('auth');
 
 
 

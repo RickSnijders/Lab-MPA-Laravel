@@ -9,10 +9,84 @@
     
 	@endif
 
-    
+    <!-- Shows playlists if user is logged in -->
+    @if(isset(Auth::user()->email))
+    <div class="col-7 mx-auto row my-2">
+        <h2 class="p-2 btn btn-secondary" style='cursor: pointer;' onclick="myFunction()">My Playlists &#x25BE;</h2> 
+
+        <div id="playlistsdiv" style="display: none;">
+            @foreach($playlists as $playlist)
+                <section class="border p-2 m-1">
+                    <div class="row">
+                        <h5 class="col-4">{{ $playlist->name }}</h5>
+                        <a class="col-2 p-1 btn btn-secondary" href="/playlist/playlistname/{{ $playlist->id }}">Change Name</a>
+                        <a class="col-2 p-1 btn btn-danger" href="/playlist/delete/{{ $playlist->id }}">Delete Playlist</a>
+                    </div>
+                    <ul>
+                        <?php 
+                            $totalduration = 0;
+                        ?>
+                        
+                        @foreach($playlistitems as $item)
+                        
+                        @if($item->playlistid == $playlist->id)
+                            @foreach($songs as $song)
+                            @if($item->songid == $song->id)
+                            <li class="col-12">
+                                <div class="row m-0 p-0">
+                                    <p class="m-0 p-0 col-6">{{ $song->song_name }}</p>
+                                    <p class="m-0 p-0 col-6 text-end">{{ $song->genre }}</p>
+                                </div>
+                                <div class="row m-0 p-0">
+                                    <p class="m-0 p-0 col-6 fst-italic"> By {{ $song->artist }} </p>
+                                    <p class="m-0 p-0 col-6 text-end"><?php $minutes = intdiv($song->duration, 60).':'. ($song->duration % 60); echo $minutes; if (($song->duration % 60) == 0){ echo 0;}?> </p>
+                                </div>
+                            </li>
+                            <?php 
+                                $totalduration = $totalduration+$song->duration;
+                            ?>
+                            @endif
+                            @endforeach
+                        @endif
+
+                        @endforeach
+                        
+                        <h6>Total Playlist Time: <?php $totaltime = intdiv($totalduration, 60).':'. ($totalduration % 60); echo $totaltime; if (($totalduration % 60) == 0){ echo 0;} ?></h6>
+                    </ul>
+                </section>
+            @endforeach
+        </div>
+	</div>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("playlistsdiv");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        } 
+    </script>
+    @endif
+
 	<div class="col-7 mx-auto row my-2">
 		<h2 class="col-8 p-0">Make Playlist</h2> 
-		
+        <!-- Error message -->
+        @if ($message = Session::get('error'))
+        <div class="alert alert-danger alert-block col-12 mx-auto">
+            <button type="button" class="close" data-dismiss="alert">x</button>
+            <strong> {{ $message }} </strong>
+        </div>
+        @endif
+        @if(count($errors) > 0)
+            <div class="alert alert-danger col-12 mx-auto">
+                <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{$error}}</li>
+                @endforeach
+                </ul>
+            </div>
+        @endif
 	</div>
     <div class="col-7 mx-auto ">
         <form method="post" action="{{ url('/playlist/create') }}">

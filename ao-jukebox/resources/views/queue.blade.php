@@ -40,6 +40,7 @@
         @if($queue == null)
             <p>There are no songs in the queue</p>
         @endif
+		
 	</div>
     
 
