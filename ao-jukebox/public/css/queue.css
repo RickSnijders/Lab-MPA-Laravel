@@ -1,0 +1,62 @@
+.queueItm{
+    background: #272932 !important;
+    padding: 1rem;
+    border-left: #128285 4px solid;
+}
+
+.queueItm>img{
+    border-bottom:#128285 4px solid;
+
+}
+
+.queueItm>div>div>p{
+    color: rgb(221, 221, 221);
+}
+
+.queueItm>div>a{
+    color: rgb(133, 133, 133);
+}
+
+.queueItm>div>div>p>span{
+    font-family: 'Open Sans Condensed', sans-serif;
+    letter-spacing: 1px;
+    color: #128285;
+    font-weight: 900;
+    font-size: 20px;
+}
+
+.queueItm>div>a:hover{
+    color: #128285;
+}
+
+.clickelement{
+    color: #272932;
+    border: 2px solid #272932;
+    font-weight: 700;
+    padding: 0.5rem;
+    border-radius: 0.8rem;
+    margin-right: 1rem;
+}
+
+.clickelement:hover{
+    color: #128285;
+    border-color: #128285;
+}
+
+.queueOptions{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.queueOptions>div{
+    display: flex;
+    flex-direction: row;
+}
+
+.queueOptions>p{
+    font-family: 'Open Sans Condensed', sans-serif;
+    letter-spacing: 1px;
+    font-weight: 600;
+    font-size: 20px;
+}

@@ -1,0 +1,182 @@
+.color1{
+    background: #F05D5E !important;
+}
+.color2{
+    background: #128285 !important;
+}
+.color3{
+    background: #E7ECEF !important;
+}
+.color4{
+    background: #D8A47F !important;
+}
+
+.color5{
+    background: #3D405B !important;
+}
+
+.bgcolor{
+    background: #272932 !important;
+}
+
+a{
+    text-decoration: none;
+}
+
+
+.navb{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.navitems{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.title{
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: white;
+    display: inline;
+    font-weight: 600;
+    font-size: 40px;
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 1px solid white;
+
+}
+
+.navi>a{
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 600;
+    letter-spacing: 1px;
+    display: flex;
+    padding: 1rem;
+    color: black;
+    width: 100px;
+    justify-content: center;
+    transition: 0.4s;
+}
+
+div>.navi:hover{
+
+    opacity: 0.8;
+    transform: translate(0px,-5px);
+    transition: 0.4s;
+}
+
+.title:hover{
+    color: white;
+}
+
+body{
+    background: #adadad;
+}
+
+.subtitle{
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 30px;
+    letter-spacing: 1px;
+    padding: 1rem;
+}
+
+
+.font{
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.whitetext{
+    color: rgb(221, 221, 221);
+}
+
+.user>a{
+    color: rgb(221, 221, 221) !important;
+    overflow:hidden; 
+    white-space:nowrap; 
+    text-overflow:ellipsis; 
+    margin: 0rem 1rem;
+
+}
+.flex{
+    display: flex;
+}
+.between{
+    justify-content: space-between;
+}
+
+.input{
+    border: none;
+    padding: 0.4rem;
+    background: #E7ECEF;
+    border-left: 5px solid #128285;
+    border-radius: 0;
+}
+
+.button{
+    color: #128285;
+    border: 2px solid #128285;
+    font-weight: 700;
+    padding: 0.5rem;
+    border-radius: 0.8rem;
+    margin-right: 1rem;
+    background: none;
+    margin: 0.5rem 0;
+}
+
+.button2{
+    color: #128285;
+    border: 2px solid #128285;
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    border-radius: 0.8rem;
+    margin-right: 1rem;
+    background: none;
+    margin: 0.5rem 0;
+}
+
+
+.button:hover{
+    color: #E7ECEF;
+    border-color: #E7ECEF;
+}
+
+.button2:hover{
+    color: #20b3b8;
+    border-color: #20b3b8;
+}
+
+.column{
+    flex-direction: column;
+}
+
+
+/* for addsong */
+.addcontainer{
+    border-left: #128285 3px solid;
+}
+
+.addcontainer>img{
+    border-bottom: #128285 3px solid;
+
+}
+
+.addcontainer>div>div>.songtitle{
+    font-family: 'Open Sans Condensed', sans-serif;
+    letter-spacing: 1px;
+    color: #128285;
+    font-weight: 600;
+}
+.addcontainer>div>div>p{
+    color:#E7ECEF;
+}
+
+.addcontainer>div>a{
+    color: rgb(133, 133, 133);
+}
+
+.addcontainer>div>a:hover{
+    color:#128285;
+}

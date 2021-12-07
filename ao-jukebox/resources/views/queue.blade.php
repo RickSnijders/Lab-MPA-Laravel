@@ -6,16 +6,16 @@
 
 
 
-	<h3 class="text-center">Queue list</h3>
+	<h3 class="text-center subtitle">Queue list</h3>
 
-	<div class="col-9 mx-auto border">
+	<div class="col-9 mx-auto">
     <?php $number = 0 ?>
     <?php $queueDuration = 0 ?>
         @if($queue != null)
         @foreach($queue as $key => $song)
 			<?php $queueDuration = $queueDuration+$song->duration ?>
 			<?php $number++ ?>
-			<div class="row border m-2 bg-light">
+			<div class="row m-2 queueItm">
 				<img src="{{$song->img}}" class=" col-1 w-10 p-0">
 				<div class="col-11">
 					<div class="row m-0 p-0">
@@ -31,19 +31,21 @@
 				</div>
 			</div>
 		@endforeach	
-			<div class="row m-0 p-0">
-				<a class="col-3" href="/queue/clear">Clear queue</a>
-				<a class="col-3" href="/playlist/save">Save as playlist</a>
-				<p class=" col-6 text-end">Queue duration: <?php $minutes = intdiv($queueDuration, 60).':'. ($queueDuration % 60); echo $minutes; if (($queueDuration % 60) == 0){ echo 0;} ?></p>
+			<div class="m-0 p-0 queueOptions mx-2">
+				<div class="">
+					<a class="clickelement" href="/queue/clear">Clear queue</a>
+					<a class="clickelement" href="/playlist/save">Save as playlist</a>
+				</div>
+				<p class="font">Queue duration: <?php $minutes = intdiv($queueDuration, 60).':'. ($queueDuration % 60); echo $minutes; if (($queueDuration % 60) == 0){ echo 0;} ?></p>
 			</div>
 		@endif 
         @if($queue == null)
-            <p>There are no songs in the queue</p>
+            <h2 class="text-center font">There are no songs in the queue</h2>
         @endif
 		
 	</div>
     
 
-
+	<link rel="stylesheet" href="{{ asset('/css/queue.css') }}" />
 
 @endsection

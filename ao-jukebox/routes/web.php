@@ -61,7 +61,7 @@ Route::get('/playlist/deletesong/{id}', 'App\Http\Controllers\PlaylistController
 
 Route::get('/playlist/addsong/{id}', 'App\Http\Controllers\PlaylistController@addsong')->middleware('auth');
 
-Route::post('/playlist/addsongtopl', 'App\Http\Controllers\PlaylistController@addsongtopl')->middleware('auth');
+Route::post('/playlist/addsongtop', 'App\Http\Controllers\PlaylistController@addsongtop')->middleware('auth');
 
 
 

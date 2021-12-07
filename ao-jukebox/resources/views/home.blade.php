@@ -8,17 +8,17 @@
 	<?php $selectedGenre = $genreSelected ?>
 
 	@endif
-	<div class="col-6 mx-auto row m-2">
-		<h2 class="col-8 p-0">Song List</h2> 
-		<form class="col-4 m-0 row" method="post" action="{{ url('/genre') }}">
+	<div class="col-6 mx-auto row my-4">
+		<h2 class="col-8 p-0 test">Song List</h2> 
+		<form class="col-4 m-0 p-1 row" method="post" action="{{ url('/genre') }}">
 		{{ csrf_field() }}
-			<select class="col-8 p-2" name="genrelist" id="genrelist">
+			<select class="col-8 p-2 bgcolor" name="genrelist" id="genrelist">
 				<option <?php if ($selectedGenre == 'All'){ echo 'selected';} ?> value="All">All</option>
 				@foreach($genres as $item)
 				<option <?php if ($selectedGenre == $item->genre){ echo 'selected';} ?> value="{{$item->genre}}">{{$item->genre}}</option>
 				@endforeach
 			</select>
-			<input class="col-4" type="submit" value="submit">
+			<input class="col-4 smbtn" type="submit" value="submit">
 		</form>
 	</div>
 
@@ -27,7 +27,7 @@
 		@foreach($songs as $song)
 			@if ($selectedGenre == 'All')
 				<?php $number++ ?>
-				<div class="row border my-2 bg-light mx-1">
+				<div class="row bgcolor homeItm">
 					<img src="{{$song->img}}" class=" col-1 p-0">
 					<div class="col-11">
 						<div class="row m-0 p-0">
@@ -44,7 +44,7 @@
 				</div>
 			@elseif ($selectedGenre == $song->genre)
 				<?php $number++ ?>
-				<div class="row border my-2 bg-light mx-1">
+				<div class="row bgcolor homeItm">
 					<img src="{{$song->img}}" class=" col-1 p-0">
 					<div class="col-11">
 						<div class="row m-0 p-0">
@@ -63,7 +63,6 @@
 		@endforeach	
 	</ul>
 
-
-
+	<link rel="stylesheet" href="{{ asset('/css/home.css') }}" />
 
 @endsection

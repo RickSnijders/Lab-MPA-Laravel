@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Song;
 use App\Models\Genre;
 use App\Models\Playlist;
+use App\Models\Playlistitem;
 use Validator;
 use Illuminate\Support\Facades\DB;
 use Auth;
@@ -19,8 +20,11 @@ class PlaylistController extends Controller
         $songs = Song::all();
         $genres = Genre::all();
         if(isset(Auth::user()->email)){
-            $playlists = DB::table('playlists')->where('userid', $request->user()->id)->get();
-            $playlistitems = DB::table('playlistitem')->get();
+            $playlists = Playlist::where('userid',$request->user()->id)->get();
+            $playlistitems = Playlistitem::all();
+
+            // $playlists = DB::table('playlists')->where('userid', $request->user()->id)->get();
+            // $playlistitems = DB::table('playlistitems')->get();
         }
        
         return view('playlist', [
@@ -62,8 +66,11 @@ class PlaylistController extends Controller
         var_dump($list);
         echo $playlistid;
         foreach ($list as $item){
-            DB::insert('insert into playlistitem (playlistid, songid) values (?, ?)', [$playlistid, $item]);
+            // DB::insert('insert into playlistitems (playlistid, songid) values (?, ?)', [$playlistid, $item]);
+            Playlistitem::create(['playlistid' => $playlistid, 'songid' => $item]);
+
         }
+        // var_dump($list);
         return redirect('/playlist');
     }
 
@@ -77,7 +84,9 @@ class PlaylistController extends Controller
         );
         $p=0;
         for ($x = 0; $x < $totalsongs; $x++) {
-            DB::insert('insert into playlistitem (playlistid, songid) values (?, ?)', [$playlistid, session('songqueue')[$p]['id']]);  
+            Playlistitem::create(['playlistid' => $playlistid, 'songid' => session('songqueue')[$p]['id']]);
+
+            // DB::insert('insert into playlistitems (playlistid, songid) values (?, ?)', [$playlistid, session('songqueue')[$p]['id']]);  
             $p = $p+1;
         }
         // return redirect('/playlist');
@@ -110,18 +119,22 @@ class PlaylistController extends Controller
     }
 
     public function delete($id){
-        DB::table('playlists')->where('id', '=', $id)->delete();
-        DB::table('playlistitem')->where('playlistid', '=', $id)->delete();
+        Playlist::where('id',$id)->delete();
+        // DB::table('playlists')->where('id', '=', $id)->delete();
+
+        Playlistitem::where('playlistid',$id)->delete();
+        // DB::table('playlistitems')->where('playlistid', '=', $id)->delete();
         return redirect('/playlist');
     }
 
     public function deletesong($id){
-        DB::table('playlistitem')->where('id', '=', $id)->delete();
+        Playlistitem::where('id',$id)->delete();
+        // DB::table('playlistitems')->where('id', '=', $id)->delete();
         return redirect('/playlist');
     }
 
     public function addsong($id){
-        $pickedsongs = DB::table('playlistitem')->where('playlistid', $id)->pluck('songid');
+        $pickedsongs = DB::table('playlistitems')->where('playlistid', $id)->pluck('songid');
         $songs = Song::all();
         return view('playlistsongadd', [
             'songs' => $songs,
@@ -130,10 +143,18 @@ class PlaylistController extends Controller
         ]);
     }
 
-    public function addsongtopl(Request $request){
+    public function addsongtop(Request $request){
         $songlist = array();
-   
-        foreach ($request->input() as $song){
+        // var_dump($request->input());
+
+        $items = $request->input();
+        unset($items['_token']);
+        unset($items['playlistid']);
+        var_dump($items);
+
+    
+        foreach ($items as $song){
+            // echo $song;
             if( $song==(int)$song){
                 if( $song>0){
                     array_push($songlist, $song);
@@ -144,9 +165,9 @@ class PlaylistController extends Controller
         if($songlist == NULL){
             return redirect('/');
         }
-
+        // var_dump($songlist);
         foreach ($songlist as $item){
-            DB::insert('insert into playlistitem (playlistid, songid) values (?, ?)', [$request->input('playlistid'), $item]);
+            DB::insert('insert into playlistitems (playlistid, songid) values (?, ?)', [$request->input('playlistid'), $item]);
         }
         return redirect('/playlist');
     }

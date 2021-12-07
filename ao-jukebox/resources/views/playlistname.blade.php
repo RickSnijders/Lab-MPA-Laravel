@@ -4,8 +4,8 @@
 
 @section('content')
 
-	<div class="col-7 mx-auto row my-2">
-		<h2 class="col-8 p-0">Playlist Name</h2> 
+	<div class="mx-auto row my-2">
+		<h2 class="subtitle text-center">Playlist Name</h2> 
 		
 	</div>
     @if ($message = Session::get('error'))
@@ -23,12 +23,13 @@
             </ul>
         </div>
     @endif
-    <div class="col-7 mx-auto ">
-        <form method="post" action="{{ url('/playlist/newname') }}">
+    <div class="col-3 mx-auto p-5 bgcolor">
+        <form class="flex column col-8 mx-auto" method="post" action="{{ url('/playlist/newname') }}">
         {{ csrf_field() }}
-            <input type="text" id="playlistname" name="playlistname" value="{{ $name[0]->name }}" placeholder="Playlist name"><br>
+            <label class="whitetext" for="playlistname">Enter Playlist name</label>
+            <input class="input" type="text" id="playlistname" name="playlistname" value="{{ $name[0]->name }}" placeholder="Playlist name"><br>
             <input type="hidden" id="playlistid" name="playlistid" value="{{ $playlistid }}"><br>
-        <input class="m-2 p-2" type="submit" value="Change">
+        <input class="m-2 p-2 button" type="submit" value="Change">
         </form>
     </div>
     

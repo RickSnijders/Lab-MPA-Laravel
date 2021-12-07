@@ -1,0 +1,74 @@
+.playlistLabel>div>div>div>p{
+    color: rgb(221, 221, 221);
+}
+
+.playlistLabel>div>div>a{
+    color: rgb(133, 133, 133);
+}
+
+.playlistLabel>div>div>div>.name{
+    color: #E7ECEF;
+    font-family: 'Open Sans Condensed', sans-serif;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+.playlistLabel>div{
+    padding: 1rem;
+    border-left: #E7ECEF 3px solid;
+
+}
+
+.playlistLabel>div>img{
+    border-bottom: #E7ECEF 3px solid;
+}
+
+.playlistLabel>div>div>a:hover{
+    color: #E7ECEF;
+}
+
+.inp{
+    background: #272932;
+    padding: 0.5rem;
+    border-radius: 0.4rem;
+    border: none;
+    color: #E7ECEF;
+}
+
+.clickelement{
+    color: #272932;
+    border: 2px solid #272932;
+    font-weight: 700;
+    padding: 0.5rem;
+    border-radius: 0.8rem;
+    margin-right: 1rem;
+    background: none;
+    margin: 0.5rem 0;
+}
+
+.clickelement:hover{
+    color: #E7ECEF;
+    border-color: #E7ECEF;
+}
+
+.h2btn{
+    font-family: 'Open Sans Condensed', sans-serif;
+    letter-spacing: 1px;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 0.4rem;
+
+}
+
+.h2btn:hover{
+    color: #e7ecefc2;
+}
+
+.savedcontainer{
+    border-left: #E7ECEF 3px solid;
+}
+
+.savedcontainer>img{
+    border-bottom: #E7ECEF 3px solid;
+
+}

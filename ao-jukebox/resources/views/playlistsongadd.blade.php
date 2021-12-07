@@ -3,10 +3,11 @@
 @section('title', 'Home')
 
 @section('content')
-	
+	1 l
 	<div class="col-7 mx-auto ">
-        <form method="post" action="{{ url('/playlist/addsongtopl') }}">
+        <form method="post" action="{{ url('/playlist/addsongtop') }}">
         {{ csrf_field() }}
+		<input type="hidden" name="playlistid" value="{{ $playlistid }}" id="playlistid">  
             
             <section class="overflow-auto mt-4" style="height: 45rem;">
                 @foreach($songs as $song)
@@ -16,11 +17,11 @@
 						@endif
 					@endforeach
 							<label class="form-check-label col-12" for="check{{ $song->id }}">
-								<div class="row border my-2 bg-light mx-1">
+								<div class="row my-2 bgcolor mx-1 p-3 addcontainer">
 									<img src="{{$song->img}}" class=" col-1 p-0">
 									<div class="col-11">
 										<div class="row m-0 p-0">
-											<p class="m-0 p-0 col-6">{{ $song->song_name }}</p>
+											<p class="m-0 p-0 col-6 songtitle">{{ $song->song_name }}</p>
 											<p class="m-0 p-0 col-6 text-end">{{ $song->genre }}</p>
 										</div>
 										<div class="row m-0 p-0">
@@ -29,14 +30,13 @@
 										</div>
 										<a class="me-4" href="/song/{{$song->id}}">Link</a>
 										<input class="form-check-input" type="checkbox" name="{{ $song->id }}" value="{{ $song->id }}" id="check{{ $song->id }}">  
-										<input type="hidden" name="playlistid" value="{{ $playlistid }}" id="playlistid">  
 									</div>
 								</div>
 							</label>
                   
                 @endforeach	
             </section>
-        <input class="m-2 p-2" type="submit" value="Add">
+        <input class=" button2" type="submit" value="Add">
         </form>
 	</div>
 

@@ -6,14 +6,14 @@
 
 
 
-	<h1 class="text-center">Login</h1>
+	<h1 class="text-center subtitle">Login</h1>
     @if(isset(Auth::user()->email))
         <script>    
                 alert("Already logged in");
                 window.location="/";
         </script>
     @endif
-    <div class="col-3 mx-auto border p-5 bg-light">
+    <div class="col-3 mx-auto p-5 bgcolor">
         @if ($message = Session::get('error'))
         <div class="alert alert-danger alert-block">
             <button type="button" class="close" data-dismiss="alert">x</button>
@@ -30,25 +30,25 @@
                 </ul>
             </div>
         @endif
-        <form method="post" action="{{ url('/login/checklogin') }}">
+        <form  method="post" action="{{ url('/login/checklogin') }}">
             {{ csrf_field() }}
-            <div class="">
+            <div >
                 <div class="form-group">
-                    <label>Enter Email</label>
-                    <input type="email" name="email" class="form-control" placeholder="example@gmail.com" />
+                    <label class="whitetext">Enter Email</label>
+                    <input type="email" name="email" class="form-control logininput" placeholder="example@gmail.com" />
                 </div>
                 <div class="form-group">
-                    <label>Enter Password</label>
-                    <input type="password" name="password" class="form-control" placeholder="password" />
+                    <label class="whitetext">Enter Password</label>
+                    <input type="password" name="password" class="form-control logininput" placeholder="password" />
                 </div>
-                <div class="form-group mt-1">
-                    <input type="submit" name="login" class="btn btn-primary" value="Login" />
+                <div class="form-group mt-1 flex between">
+                    <input type="submit" name="login" class="clickelement" value="Login" />
+                    <a class="clickelement" href="/register" >Register</a>
                 </div>
             </div>
         </form>
-        <div class="my-2">
-            <a class="" href="/register">Register</a>
-        </div>
+       
     </div>
 
+    <link rel="stylesheet" href="{{ asset('/css/login.css') }}" />
 @endsection

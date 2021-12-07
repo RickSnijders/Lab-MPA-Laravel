@@ -1,0 +1,21 @@
+.logininput{
+    background: #E7ECEF;
+    border-left: 5px solid #D8A47F;
+    border-radius: 0;
+}
+
+.clickelement{
+    color: #D8A47F;
+    border: 2px solid #D8A47F;
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    border-radius: 0.8rem;
+    margin-right: 1rem;
+    background: none;
+    margin: 0.5rem 0;
+}
+
+.clickelement:hover{
+    color: hsl(25, 81%, 80%);
+    border-color: hsl(25, 81%, 80%);
+}
