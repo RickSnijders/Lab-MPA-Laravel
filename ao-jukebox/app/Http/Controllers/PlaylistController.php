@@ -23,8 +23,6 @@ class PlaylistController extends Controller
             $playlists = Playlist::where('userid',$request->user()->id)->get();
             $playlistitems = Playlistitem::all();
 
-            // $playlists = DB::table('playlists')->where('userid', $request->user()->id)->get();
-            // $playlistitems = DB::table('playlistitems')->get();
         }
        
         return view('playlist', [
@@ -53,7 +51,9 @@ class PlaylistController extends Controller
         $pname = $request->input('playlistname');
         $userid = $request->user()->id;
         
-        $playlistid = DB::table('playlists')->insertGetId(
+
+
+        $playlistid = Playlist::insertGetId(
             ['name' => $pname, 'userid' => $userid]
         );
         return $this->addsongs($songlist, $playlistid);
@@ -66,7 +66,7 @@ class PlaylistController extends Controller
         var_dump($list);
         echo $playlistid;
         foreach ($list as $item){
-            // DB::insert('insert into playlistitems (playlistid, songid) values (?, ?)', [$playlistid, $item]);
+
             Playlistitem::create(['playlistid' => $playlistid, 'songid' => $item]);
 
         }
@@ -79,14 +79,14 @@ class PlaylistController extends Controller
         $name = date('Y-m-d H:i:s').'_Queue';
         $totalsongs = count(session('songqueue'));
         $userid = $request->user()->id;
-        $playlistid = DB::table('playlists')->insertGetId(
+
+        $playlistid = Playlist::insertGetId(
             ['name' => $name, 'userid' => $userid]
         );
         $p=0;
         for ($x = 0; $x < $totalsongs; $x++) {
             Playlistitem::create(['playlistid' => $playlistid, 'songid' => session('songqueue')[$p]['id']]);
 
-            // DB::insert('insert into playlistitems (playlistid, songid) values (?, ?)', [$playlistid, session('songqueue')[$p]['id']]);  
             $p = $p+1;
         }
         // return redirect('/playlist');
@@ -95,7 +95,7 @@ class PlaylistController extends Controller
     }
 
     public function playlistname($id){
-        $name = DB::table('playlists')->where('id', $id)->get();
+        $name = Playlist::where('id',$id)->get();
         return view('playlistname', [
             'playlistid' => $id,
             'name' => $name,
@@ -108,11 +108,11 @@ class PlaylistController extends Controller
             'playlistname' => 'required',
             
         ]);
-        $result = DB::table('playlists')->where('userid', $request->user()->id)->where('id', $request->playlistid)->get();
+        $result = Playlist::where('userid', $request->user()->id)->where('id', $request->playlistid)->get();
         if ($result->isEmpty()) { 
             return back()->with('error', 'Something went wrong');
         } else{
-            DB::table('playlists')->where('userid', $request->user()->id)->where('id', $request->playlistid)->update(['name' => $request->input('playlistname')]);  
+            Playlist::where('userid', $request->user()->id)->where('id', $request->playlistid)->update(['name' => $request->input('playlistname')]);  
             return redirect('/playlist');
         }
         
@@ -120,21 +120,21 @@ class PlaylistController extends Controller
 
     public function delete($id){
         Playlist::where('id',$id)->delete();
-        // DB::table('playlists')->where('id', '=', $id)->delete();
+
 
         Playlistitem::where('playlistid',$id)->delete();
-        // DB::table('playlistitems')->where('playlistid', '=', $id)->delete();
+
         return redirect('/playlist');
     }
 
     public function deletesong($id){
         Playlistitem::where('id',$id)->delete();
-        // DB::table('playlistitems')->where('id', '=', $id)->delete();
+
         return redirect('/playlist');
     }
 
     public function addsong($id){
-        $pickedsongs = DB::table('playlistitems')->where('playlistid', $id)->pluck('songid');
+        $pickedsongs = Playlistitem::where('playlistid', $id)->pluck('songid');
         $songs = Song::all();
         return view('playlistsongadd', [
             'songs' => $songs,
@@ -155,11 +155,10 @@ class PlaylistController extends Controller
     
         foreach ($items as $song){
             // echo $song;
-            if( $song==(int)$song){
-                if( $song>0){
-                    array_push($songlist, $song);
-                }   
-            }
+            if( $song>0){
+                array_push($songlist, $song);
+            }   
+  
         }
 
         if($songlist == NULL){
@@ -167,7 +166,7 @@ class PlaylistController extends Controller
         }
         // var_dump($songlist);
         foreach ($songlist as $item){
-            DB::insert('insert into playlistitems (playlistid, songid) values (?, ?)', [$request->input('playlistid'), $item]);
+            Playlistitem::create(['playlistid' => $request->input('playlistid'), 'songid' => $item]);
         }
         return redirect('/playlist');
     }
